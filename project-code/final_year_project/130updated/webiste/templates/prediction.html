@@ -1,0 +1,92 @@
+{% extends 'homeheader.html'%}
+{% block content %}
+<script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
+<div class="modal-body align-w3">
+    <form action="/prediction" method="post" class="p-sm-3">
+        <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Enter Temperature</label>
+            <input type="text" class="form-control" placeholder="Enter Temperature" name="Name" id="recipient-name"
+                required="">
+        </div>
+		<div class="form-group">
+            <label for="recipient-name" class="col-form-label">Enter Humidity</label>
+            <input type="text" class="form-control" placeholder="Enter Humidity" name="Name1" id="recipient-name"
+                required="">
+        </div>
+		<div class="form-group">
+            <label for="recipient-name" class="col-form-label">Enter Moisture</label>
+            <input type="text" class="form-control" placeholder="Enter Moisture" name="Name2" id="recipient-name"
+                required="">
+        </div>
+		<div class="form-group">
+            <label for="recipient-name" class="col-form-label">Enter Light</label>
+            <input type="text" class="form-control" placeholder="Enter Light" name="Name3" id="recipient-name"
+                required="">
+        </div>
+		<div class="form-group">
+            <label for="recipient-name" class="col-form-label">Enter Height</label>
+            <input type="text" class="form-control" placeholder="Enter height" name="Name4" id="recipient-name"
+                required="">
+        </div>
+		<div class="form-group">
+            <label for="recipient-name" class="col-form-label">Enter Width</label>
+            <input type="text" class="form-control" placeholder="Enter width" name="Name5" id="recipient-name"
+                required="">
+        </div>
+        <div class="right-w3l">
+            <input type="submit" class="form-control bg-theme" value="Predict">
+        </div>
+
+    </form>
+</div>
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class=flashes>
+                {% for message in messages %}
+                <h3>{{ message }}</h3>
+                {% endfor %}
+                </div>
+            {% endif %}
+            {% endwith %}
+        <div id="container"></div>
+
+            <script>
+                anychart.onDocumentReady(function() {
+
+                // set the data
+                var data = [
+                    {x: "Not Favourable conditions", value: {{ data1 }}},
+                    {x: "Favourable conditions", value: {{ data2 }}},
+                    
+                ];
+
+                // create the chart
+                var chart = anychart.pie();
+
+                // set the chart title
+                chart.title("Analysis of best suitable conditions");
+
+                // add the data
+                chart.data(data);
+
+                // display the chart in the container
+                chart.container('container');
+                chart.draw();
+
+                });
+
+            </script>
+            <style>
+                 #container {
+                width: 100%;
+                height: 320px;
+                margin: 0;
+                padding: 0;
+              }
+            </style>
+            
+
+
+{% endblock %}

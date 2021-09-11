@@ -1,0 +1,60 @@
+{% extends 'newheader.html'%}
+{% block content %}
+
+<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+				    <tr>
+				        <th scope="col">id</th>
+				        <th scope="col">uid</th>
+				      	<th scope="col">gender</th>
+				      	<th scope="col">sexuallity</th>
+				      	<th scope="col">age</th>
+				      	<th scope="col">income</th>
+				      	<th scope="col">bodyweight</th>
+				      	<th scope="col">virgin</th>
+				      	<th scope="col">prostitution_legal</th>
+				      	<th scope="col">pay_for_sex</th>
+				      	<th scope="col">social_fear</th>
+				      	<th scope="col">depressed</th>
+				      	<th scope="col">what_help_from_others</th>
+				      	<th scope="col">friends</th>
+				      	<th scope="col">employment</th>
+				      	<th scope="col">edu_level</th>
+				      	<th scope="col">job_title</th>
+				      	<th scope="col">Prediction</th>
+				      
+                       
+				    </tr>
+			  	</thead>
+			  	<tbody>
+                    {% for r in result %}
+				    <tr>
+				      	<th scope="row">{{r[0]}}</th>
+				      	<td>{{r[1]}}</td>
+				      	<td>{{r[2]}}</td>
+				      	<td>{{r[3]}}</td>
+				      	<td>{{r[4]}}</td>
+				      	<td>{{r[5]}}</td>
+				      	<td>{{r[6]}}</td>
+				      	<td>{{r[7]}}</td>
+				      	<td>{{r[8]}}</td>
+				      	<td>{{r[9]}}</td>
+				      	<td>{{r[10]}}</td>
+				      	<td>{{r[11]}}</td>
+				      	<td>{{r[12]}}</td>
+				      	<td>{{r[13]}}</td>
+				      	<td>{{r[14]}}</td>
+				      	<td>{{r[15]}}</td>
+				      	<td>{{r[16]}}</td>
+				      	<td>{{r[17]}}</td>
+				      	
+				
+				   
+				    </tr>
+                    {% endfor %}
+			  	</tbody>
+			</table>
+
+
+{% endblock %}
